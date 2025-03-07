@@ -4927,15 +4927,6 @@ const placeOrderButton = document.getElementById("placeOrder");
 const proceedButton = document.getElementById("proceedButton");
 const cancelLink = document.getElementById("cancelLink");
 
-// Your Paystack Public Key
-const PAYSTACK_PUBLIC_KEY = "pk_test_c678a43679b7e2e3b7321abb2b1fca36f925279a";  // Replace with your actual key
-
-// Your BoostLegit API Key
-const BOOSTLEGIT_API_KEY = "2ac52ef0b0d1f9ef3360230c29299d50";
-
-// Google Apps Script Web App URL
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbya3ifvUk2TJNQeBuJUGiOe3HGtrW7bs6E9Xhrj9ZOkpeU85P3D6-fMN16Wg9jbblo/exec";  // Replace with actual script URL
-
 // Show pop-up when "Place Order" is clicked
 placeOrderButton.addEventListener("click", function () {
     emailPopup.style.display = "flex";
@@ -4961,92 +4952,36 @@ proceedButton.addEventListener("click", function () {
         alert("Please enter a valid email address.");
         return;
     }
-
-    // Simulated order details (Replace these with actual data from the main page)
-    const serviceId = 1; // Example Service ID from BoostLegit
-    const orderLink = "https://example.com/profile"; // User's social media link
-    const orderQuantity = 100; // Example quantity
-    const orderPrice = 5.00; // Example price (Adjust dynamically)
-
-    // Initialize Paystack payment
-    payWithPaystack(fullName, userEmail, orderPrice, serviceId, orderLink, orderQuantity);
 });
 
-// ==================== Paystack Payment Integration ====================
-function payWithPaystack(name, email, amount, serviceId, link, quantity) {
-    let handler = PaystackPop.setup({
-        key: PAYSTACK_PUBLIC_KEY,
-        email: email,
-        amount: amount * 100,  // Convert to kobo (smallest currency unit)
-        currency: "GHS",
-        callback: function (response) {
-            let transactionReference = response.reference;
-            alert("Payment Successful! Reference: " + transactionReference);
-
-            // Send order details to BoostLegit API
-            processBoostLegitOrder(name, email, serviceId, link, quantity);
-
-            // Send receipt via Google Apps Script
-            sendReceiptToEmail(name, email, amount, transactionReference, serviceId, link, quantity);
-        },
-        onClose: function () {
-            alert("Transaction was canceled.");
-        }
-    });
-
-    handler.openIframe();
-}
-
-// ==================== BoostLegit API Order Processing ====================
-function processBoostLegitOrder(name, email, serviceId, link, quantity) {
-    fetch("https://boostlegit.com/api/v2", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            key: BOOSTLEGIT_API_KEY,
-            action: "add",
-            service: serviceId,
-            link: link,
-            quantity: quantity
-        })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.order) {
-            console.log("Order placed successfully! Order ID:", data.order);
-        } else {
-            console.error("Order failed:", data);
-            alert("Failed to place order.");
-        }
-    })
-    .catch(error => console.error("Error:", error));
-}
-
-// ==================== Google Apps Script Email Receipt ====================
-function sendReceiptToEmail(name, email, amount, transactionRef, serviceId, link, quantity) {
-    fetch(GOOGLE_SCRIPT_URL, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            fullName: name,
-            userEmail: email,
-            amountPaid: amount,
-            transactionReference: transactionRef,
-            serviceId: serviceId,
-            orderLink: link,
-            quantity: quantity
-        })
-    })
-    .then(response => response.text())
-    .then(data => {
-        console.log("Receipt sent:", data);
-    })
-    .catch(error => console.error("Error sending receipt:", error));
-}
-
 // ==================== End of Checkout & Payment Logic ====================
+
+document.addEventListener("DOMContentLoaded", function () {
+    const openCloseStatus = document.getElementById("open-close-status");
+
+    function updateBusinessHours() {
+        const openingHour = 9;  // 9:00 AM
+        const closingHour = 18; // 6:00 PM
+
+        const now = new Date();
+        const currentHour = now.getHours();
+        const currentMinute = now.getMinutes();
+        const currentSecond = now.getSeconds();
+
+        if (currentHour >= openingHour && currentHour < closingHour) {
+            openCloseStatus.textContent = `Open Now - ${currentHour}:${currentMinute}:${currentSecond}`;
+            openCloseStatus.classList.add("open");
+            openCloseStatus.classList.remove("closed");
+        } else {
+            openCloseStatus.textContent = `Closed Now - ${currentHour}:${currentMinute}:${currentSecond}`;
+            openCloseStatus.classList.add("closed");
+            openCloseStatus.classList.remove("open");
+        }
+    }
+
+    // Update every second (real-time update)
+    updateBusinessHours(); // Run immediately on page load
+    setInterval(updateBusinessHours, 1000); // Update every second
+});
+
 initTestimonialSlider();

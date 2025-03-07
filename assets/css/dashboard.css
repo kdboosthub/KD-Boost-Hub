@@ -14,8 +14,10 @@ body {
     align-items: center;
     min-height: 100vh;
     width: 100%; /* Ensure body takes full width */
+    max-width: 1400px;
     margin: 0; /* Remove default margin */
     padding: 0; /* Remove default padding */
+    padding-top: 70px;
     font-size: 16px; /* Base font size for better readability */
     line-height: 1.6; /* Improved line height for readability */
     overflow-x: hidden; /* Prevent horizontal overflow */
@@ -39,93 +41,100 @@ body {
 
 /* Header */
 .header {
-    position: sticky;
-    top: 0;
-    width: 100%;
-    height: 60px;
-    background: #fff;
-    padding: 15px 5%;
+  top: 0;
+  left: 0;
+  height: 70px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    z-index: 1000;
-}
-
-/* Logo Section */
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    background: white;
+    padding: 10px 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    z-index: 2000;
 }
 
 .logo img {
-    width: 40px;
-    height: 40px;
+    width: 120px; /* Adjust width for better visibility */
+    height: auto; /* Keep height consistent */
+    object-fit: contain; /* Ensures the image scales properly */
 }
 
-.logo h1 {
-    color: #000; /* Pure white for logo text */
-    font-size: 24px;
-    font-weight: 900; /* Slightly bolder for emphasis */
-}
-
-/* Navigation Links */
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 25px; /* Increased gap for better spacing */
-    list-style: none;
-}
-
-.nav-links li a {
-    color: #fff; /* Soft white for links */
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s ease;
-}
-
-.nav-links li a:hover {
-    color: #7C4; /* Brighter purple for hover effect */
-}
-
-/* Menu Toggle Button (for mobile) */
 .menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    color: black;
     font-size: 24px;
     cursor: pointer;
+    background: #eee;
+    padding: 10px;
+    border-radius: 5px;
+    display: none;
 }
 
-/* Dropdown Menu for Mobile */
+.dropdown {
+    display: flex;
+    gap: 20px;
+}
+
+.dropdown ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.dropdown ul li {
+    padding: 10px 20px;
+}
+
+.dropdown ul li a {
+    text-decoration: none;
+    color: black;
+    display: block;
+}
+
+.dropdown ul li:hover {
+    background: #f0f0f0;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
     .menu-toggle {
         display: block;
     }
-
-    .nav-links {
+    
+    .dropdown {
         display: none;
-        flex-direction: column;
         position: absolute;
-        top: auto;
         right: 20px;
-        background: #1A0F44;
-        padding: 15px;
-        border-radius: 8px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        top: 60px;
+        background: white;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        overflow: hidden;
+        flex-direction: column;
+        width: 200px;
     }
 
-    .nav-links.active {
-        display: flex;
+    .dropdown ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .dropdown ul li {
+        text-align: center;
+    }
+
+    .dropdown ul li a {
+        width: 100%;
+        display: block;
     }
 }
 
 /* Main Container */
 .container {
     width: 90%;
-    max-width: 800px;
+    max-width: 1400px;
     background: #1F144D;
     padding: 20px; /* Increased padding for better spacing */
     border-radius: 12px;
@@ -619,15 +628,94 @@ button:hover {
     text-decoration: underline;
 }
 
-/* Footer */
+/* Footer Styling */
 .footer {
-  position: flex;
-    width: 100%;
-    background: #1A0F44;
-    padding: 20px; /* Increased padding for better spacing */
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    color: #fff;
     text-align: center;
+    padding: 20px 0;
+    font-family: Arial, sans-serif;
+    position: relative;
+    width: 100%;
+    bottom: 0;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-logo img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.footer-logo h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.footer-info p {
     font-size: 14px;
-    margin-top: 30px; /* Increased margin for better spacing */
-    box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.3);
-    color: #E0E0E0; /* Soft white for footer text */
+    margin: 5px 0;
+}
+
+/* Real-time open/close status styling */
+#open-close-status {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+#open-close-status.open {
+    color: #28a745;
+    animation: glow-green 1s infinite alternate;
+}
+
+#open-close-status.closed {
+    color: #dc3545;
+    animation: glow-red 1s infinite alternate;
+}
+
+/* Glowing Effect for Open & Closed Status */
+@keyframes glow-green {
+    0% { text-shadow: 0 0 5px #28a745; }
+    100% { text-shadow: 0 0 15px #28a745; }
+}
+
+@keyframes glow-red {
+    0% { text-shadow: 0 0 5px #dc3545; }
+    100% { text-shadow: 0 0 15px #dc3545; }
+}
+
+/* Social Icons */
+.footer-socials {
+    display: flex;
+    gap: 10px;
+}
+
+.social-icon {
+    color: #fff;
+    font-size: 18px;
+    padding: 10px;
+    transition: 0.3s;
+}
+
+.social-icon:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+    .footer-content {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0 20px;
+    }
 }

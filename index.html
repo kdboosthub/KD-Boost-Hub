@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KD Boost Hub - Boost Your Social Media & Affordable Data Bundles</title>
+<script src="https://js.paystack.co/v1/inline.js"></script>
     <meta name="description" content="KD Boost Hub offers professional social media growth solutions and affordable data bundles in Ghana. Trusted by thousands for instant service, secure payments, and 24/7 support.">
     <meta name="keywords" content="KD Boost Hub, social media growth, data bundles, Ghana, affordable data, secure payments">
     <meta name="author" content="KD Boost Hub">
@@ -76,16 +77,17 @@
     <!-- Header Section -->
     <header class="header">
         <div class="logo">
-            <img src="favicon/favicon.png" alt="KD Boost Hub Logo">
-            <h1>KD Boost Hub</h1>
+            <img src="assets/img/KDBoostHub.png" alt="KD Boost Hub Logo">
         </div>
-        <nav>
-            <button class="menu-toggle" aria-label="Toggle Menu">&#9776;</button>
-            <ul class="nav-links">
-                <li><a href="#">Home</a></li>
+        <div class="menu-toggle" id="menuToggle">
+            &#9776;
+        </div>
+        <nav class="dropdown" id="dropdownMenu">
+            <ul>
                 <li><a href="#">Orders</a></li>
-                <li><a href="#">Pricing</a></li>
                 <li><a href="#">Contact</a></li>
+                <li><a href="#">Terms</a></li>
+                <li><a href="#">Privacy</a></li>
             </ul>
         </nav>
     </header>
@@ -290,13 +292,29 @@
     </div>
 </div>
 
-    <!-- Footer Section -->
-    <footer class="footer">
-        <p>&copy; 2024 KD Boost Hub. All rights reserved.</p>
-    </footer>
+<!-- Footer Section -->
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-logo">
+            <img src="favicon/favicon.png" alt="KD Boost Hub Logo">
+            <h2>KD Boost Hub</h2>
+        </div>
+        
+        <div class="footer-info">
+            <p id="open-close-status">Checking status...</p>
+            <p>&copy; 2024 KD Boost Hub. All rights reserved.</p>
+        </div>
+
+        <div class="footer-socials">
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </div>
+</footer>
 
     <!-- Other scripts -->
 <script src="assets/js/dashboard.js"></script>
-<script src="https://js.paystack.co/v1/inline.js"></script>
 </body>
 </html>
