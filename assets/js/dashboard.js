@@ -4840,19 +4840,20 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Menu Toggle Functionality
-    const menuToggle = document.querySelector(".menu-toggle");
-    const navLinks = document.querySelector(".nav-links");
+document.addEventListener("DOMContentLoaded", function () {
+    const menuToggle = document.querySelector("#menuToggle");
+    const dropdownMenu = document.querySelector("#dropdownMenu");
+
+    if (!menuToggle || !dropdownMenu) {
+        console.error("Menu elements not found!");
+        return;
+    }
 
     menuToggle.addEventListener("click", function () {
-        navLinks.classList.toggle("active");
+        dropdownMenu.style.display = dropdownMenu.style.display === "block" ? "none" : "block";
+        console.log("Menu clicked!");
     });
-
-    // Close menu when clicking outside
-    document.addEventListener("click", function (event) {
-        if (!event.target.closest(".menu-toggle") && !event.target.closest(".nav-links")) {
-            navLinks.classList.remove("active");
-        }
-    });
+});
     
     document.querySelectorAll(".faq").forEach(faq => {
     faq.addEventListener("click", () => {
@@ -4960,8 +4961,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const openCloseStatus = document.getElementById("open-close-status");
 
     function updateBusinessHours() {
-        const openingHour = 9;  // 9:00 AM
-        const closingHour = 18; // 6:00 PM
+        const openingHour = 7;  // 7:00 AM
+        const closingHour = 21; // 9:00 PM
 
         const now = new Date();
         const currentHour = now.getHours();
