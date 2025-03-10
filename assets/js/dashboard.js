@@ -1,4 +1,28 @@
 document.addEventListener("DOMContentLoaded", function () {
+    console.log("JavaScript Loaded!"); // Debugging step
+
+    // Menu Toggle
+    const menuToggle = document.getElementById("menuToggle");
+    const dropdownMenu = document.getElementById("dropdownMenu");
+
+    if (menuToggle && dropdownMenu) {
+        menuToggle.addEventListener("click", function () {
+            dropdownMenu.classList.toggle("active");
+            console.log("Menu Toggled!"); // Debugging step
+        });
+
+        document.addEventListener("click", function (event) {
+            if (!menuToggle.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                dropdownMenu.classList.remove("active");
+                console.log("Menu Closed!"); // Debugging step
+            }
+        });
+    } else {
+        console.error("Menu elements not found!");
+    }
+
+    // Paystack Test Keys
+    const PAYSTACK_PUBLIC_KEY = "pk_test_4d4a9be6b5d429cfb284eaff972293630169a4cd";
     // Inject Google Analytics and Verification Meta Tags
     const head = document.head;
 
@@ -4811,21 +4835,21 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Function to update price
-    function updateCharge() {
-        let quantityInput = document.getElementById("quantity");
-        let chargeInput = document.getElementById("charge");
+    // New charge calculation logic
+function updateCharge() {
+    let quantityInput = document.getElementById("quantity");
+    let chargeInput = document.getElementById("charge");
 
-        let quantity = parseInt(quantityInput.value) || 0;
-        let pricePer1000 = parseFloat(quantityInput.dataset.price) || 0;
+    let quantity = parseInt(quantityInput.value) || 0;
+    let pricePer1000 = parseFloat(quantityInput.dataset.price) || 0;
 
-        if (quantity >= parseInt(quantityInput.min) && quantity <= parseInt(quantityInput.max)) {
-            let totalPrice = (quantity / 1000) * pricePer1000;
-            chargeInput.value = `GHC ${totalPrice.toFixed(2)}`;
-        } else {
-            chargeInput.value = "GHC 0";
-        }
+    if (quantity >= parseInt(quantityInput.min) && quantity <= parseInt(quantityInput.max)) {
+        let totalPrice = (quantity / 1000) * pricePer1000;
+        chargeInput.value = `GHC ${totalPrice.toFixed(2)}`;
+    } else {
+        chargeInput.value = "GHC 0";
     }
+}
 
     // Listen for category and service selection changes
     categoryDropdown.addEventListener("change", updateCategoryDetails);
@@ -4838,22 +4862,6 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector(".close-btn").addEventListener("click", function () {
         document.querySelector(".whatsapp-float").style.display = "none";
     });
-
-    // Menu Toggle Functionality
-document.addEventListener("DOMContentLoaded", function () {
-    const menuToggle = document.querySelector("#menuToggle");
-    const dropdownMenu = document.querySelector("#dropdownMenu");
-
-    if (!menuToggle || !dropdownMenu) {
-        console.error("Menu elements not found!");
-        return;
-    }
-
-    menuToggle.addEventListener("click", function () {
-        dropdownMenu.style.display = dropdownMenu.style.display === "block" ? "none" : "block";
-        console.log("Menu clicked!");
-    });
-});
     
     document.querySelectorAll(".faq").forEach(faq => {
     faq.addEventListener("click", () => {
@@ -4928,8 +4936,32 @@ const placeOrderButton = document.getElementById("placeOrder");
 const proceedButton = document.getElementById("proceedButton");
 const cancelLink = document.getElementById("cancelLink");
 
-// Show pop-up when "Place Order" is clicked
+// New "Place Order" button click logic
 placeOrderButton.addEventListener("click", function () {
+    // Capture values from the main website
+    const link = document.getElementById("link").value.trim();
+    const quantity = document.getElementById("quantity").value.trim();
+    const charge = document.getElementById("charge").value.trim();
+
+    // Ensure the values are captured correctly
+    console.log("Link:", link); // Debugging
+    console.log("Quantity:", quantity); // Debugging
+    console.log("Charge:", charge); // Debugging
+
+    // Pre-fill the pop-up fields
+    const popupLink = document.getElementById("popupLink");
+    const popupQuantity = document.getElementById("popupQuantity");
+    const popupCharge = document.getElementById("popupCharge");
+
+    if (popupLink && popupQuantity && popupCharge) {
+        popupLink.value = link;
+        popupQuantity.value = quantity;
+        popupCharge.value = charge;
+    } else {
+        console.error("Pop-up fields not found!"); // Debugging
+    }
+
+    // Display the pop-up
     emailPopup.style.display = "flex";
 });
 
@@ -4940,12 +4972,17 @@ cancelLink.addEventListener("click", function (e) {
 });
 
 // Handle "Proceed to Checkout" click
+// New Paystack payment logic
 proceedButton.addEventListener("click", function () {
     const fullName = document.getElementById("fullName").value.trim();
     const userEmail = document.getElementById("userEmail").value.trim();
+    const link = document.getElementById("link").value.trim();
+    const quantity = document.getElementById("quantity").value.trim();
+    const charge = document.getElementById("charge").value.trim();
 
-    if (!fullName || !userEmail) {
-        alert("Please enter your full name and email.");
+    // Validate inputs
+    if (!fullName || !userEmail || !link || !quantity || !charge) {
+        alert("Please fill in all fields.");
         return;
     }
 
@@ -4953,9 +4990,84 @@ proceedButton.addEventListener("click", function () {
         alert("Please enter a valid email address.");
         return;
     }
+
+    // Extract the numeric value from the charge (e.g., "GHC 25.00" -> 2500 kobo)
+    const amountInGHC = parseFloat(charge.replace("GHC ", "")) * 100; // Convert to kobo
+
+    // Initialize Paystack payment
+    const handler = PaystackPop.setup({
+        key: PAYSTACK_PUBLIC_KEY, // Replace with your public key
+        email: userEmail,
+        amount: amountInGHC, // Amount in kobo
+        currency: "GHS", // Currency in GHS (Ghanaian Cedis)
+        ref: "KDBH_" + Math.floor(Math.random() * 1000000000 + 1), // Generate a unique reference
+        metadata: {
+            custom_fields: [
+                {
+                    display_name: "Full Name",
+                    variable_name: "full_name",
+                    value: fullName,
+                },
+                {
+                    display_name: "Service Link",
+                    variable_name: "service_link",
+                    value: link,
+                },
+                {
+                    display_name: "Quantity",
+                    variable_name: "quantity",
+                    value: quantity,
+                },
+            ],
+        },
+        callback: function (response) {
+            // Payment successful
+            alert("Payment successful! Reference: " + response.reference);
+            // You can redirect the user or perform other actions here
+            emailPopup.style.display = "none"; // Close the pop-up
+        },
+        onClose: function () {
+            // Payment window closed
+            alert("Payment window closed. Transaction incomplete.");
+        },
+    });
+
+    // Open Paystack payment window
+    handler.openIframe();
 });
 
 // ==================== End of Checkout & Payment Logic ====================
+
+document.addEventListener("DOMContentLoaded", function () {
+    const stats = {
+        accountsBoosted: 24986,
+        happyClients: 23564,
+        reviews: 19758,
+        countriesServed: 142 // This one stays fixed
+    };
+
+    const keys = Object.keys(stats);
+    
+    keys.forEach((key) => {
+        let storedValue = localStorage.getItem(key);
+        let lastUpdate = localStorage.getItem("lastUpdate");
+
+        // Check if a day has passed
+        let today = new Date().toDateString();
+
+        if (!storedValue || lastUpdate !== today) {
+            if (key !== "countriesServed") {
+                stats[key]++; // Increment daily
+            }
+            localStorage.setItem(key, stats[key]);
+            localStorage.setItem("lastUpdate", today);
+        } else {
+            stats[key] = parseInt(storedValue);
+        }
+
+        document.getElementById(key).innerText = stats[key];
+    });
+});
 
 document.addEventListener("DOMContentLoaded", function () {
     const openCloseStatus = document.getElementById("open-close-status");
