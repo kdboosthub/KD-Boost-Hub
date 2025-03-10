@@ -39,33 +39,35 @@ body {
     }
 }
 
-/* Header */
+/* Header Styling */
 .header {
-  top: 0;
-  left: 0;
-  height: 70px;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1100px;
+    background: white;
+    padding: 12px 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: white;
-    padding: 10px 20px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    position: fixed;
-    width: 100%;
-    z-index: 2000;
+    z-index: 30000;
 }
 
 .logo img {
-    width: 120px; /* Adjust width for better visibility */
-    height: auto; /* Keep height consistent */
-    object-fit: contain; /* Ensures the image scales properly */
+    width: 150px;
+    height: auto;
+    object-fit: contain;
 }
 
 .menu-toggle {
-    font-size: 24px;
+    font-size: 28px;
     cursor: pointer;
     background: #eee;
-    padding: 10px;
+    padding: 12px;
     border-radius: 5px;
     display: none;
 }
@@ -90,6 +92,7 @@ body {
 .dropdown ul li a {
     text-decoration: none;
     color: black;
+    font-weight: bold;
     display: block;
 }
 
@@ -97,27 +100,85 @@ body {
     background: #f0f0f0;
 }
 
-/* Responsive Design */
+/* Hero Section */
+.hero {
+    background: url('assets/img/hero-bg.jpg') center/cover no-repeat;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    position: flex;
+    padding: 20px;
+    margin-top: -20px; /* FIX: Pulls hero section up */
+}
+
+@media (max-width: 900px) {
+    .hero {
+        margin-top: -10px; /* Adjust for smaller screens */
+    }
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 600px;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 1.2rem;
+    color: white;
+    background: #ff4081;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #e6006f;
+}
+
+/* Responsive Menu */
 @media (max-width: 768px) {
     .menu-toggle {
         display: block;
     }
-    
-    .dropdown {
-    display: none;
-    position: absolute;
-    top: 60px;
-    right: 10px;
-    background: white;
-    border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 10px;
-    z-index: 2000;
-}
 
-.dropdown.active {
-    display: block;
-}
+    .dropdown {
+        display: none;
+        position: absolute;
+        top: 70px;
+        right: 10px;
+        background: white;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 10px;
+        z-index: 2000;
+    }
+
+    .dropdown.active {
+        display: block;
+    }
 
     .dropdown ul {
         flex-direction: column;
