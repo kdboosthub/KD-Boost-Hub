@@ -355,7 +355,7 @@ button:hover {
 }
 
 /* Directly target the <h1> inside .why-choose-us-section */
-.why-choose-us-section h1 {
+.why-choose-us-section h3 {
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 10px;
