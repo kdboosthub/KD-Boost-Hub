@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KD Boost Hub - Boost Your Social Media & Affordable Data Bundles</title>
+    <meta name="description" content="KD Boost Hub offers professional social media growth solutions and affordable data bundles in Ghana. Trusted by thousands for instant service, secure payments, and 24/7 support.">
+    <meta name="keywords" content="KD Boost Hub, social media growth, data bundles, Ghana, affordable data, secure payments">
+    <meta name="author" content="KD Boost Hub">
+    <meta name="robots" content="index, follow">
+
+    <!-- Canonical & Hreflang -->
+    <link rel="canonical" href="https://www.kdboosthub.com/">
+    <link rel="alternate" hreflang="en" href="https://www.kdboosthub.com/">
+    <link rel="alternate" hreflang="fr" href="https://www.kdboosthub.com/fr/">
+    <link rel="alternate" hreflang="es" href="https://www.kdboosthub.com/es/">
+    <link rel="alternate" hreflang="x-default" href="https://www.kdboosthub.com/">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="KD Boost Hub - Boost Your Social Media & Affordable Data Bundles">
+    <meta property="og:description" content="Trusted by thousands for instant service, secure payments, and 24/7 support.">
+    <meta property="og:image" content="favicon/favicon.png">
+    <meta property="og:url" content="https://www.kdboosthub.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="KD Boost Hub">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="KD Boost Hub - Boost Your Social Media & Affordable Data Bundles">
+    <meta name="twitter:description" content="Trusted by thousands for instant service, secure payments, and 24/7 support.">
+    <meta name="twitter:image" content="favicon/favicon.png">
+    <meta name="twitter:site" content="@KDTechHub">
+
+    <!-- Favicon & Preload Fonts -->
+    <link rel="icon" type="image/png" href="favicon/favicon.png">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" as="style">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://www.kdboosthub.com; 
+    script-src 'self' https://www.googletagmanager.com; 
+    style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com 'unsafe-inline'; 
+    font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; 
+    img-src 'self' data: https://www.kdboosthub.com;">
+
+    <!-- Schema Markup for Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "KD Boost Hub",
+        "url": "https://www.kdboosthub.com",
+        "logo": "favicon/favicon.png",
+        "description": "KD Boost Hub offers professional social media growth solutions and affordable data bundles in Ghana.",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+233594516288",
+            "contactType": "customer service",
+            "areaServed": "Ghana",
+            "availableLanguage": "English"
+        },
+        "sameAs": [
+            "https://instagram.com/kdtechhub",
+            "https://www.youtube.com/channel/UCULZKdO4gPqIZPTpWP5quWQ",
+            "https://x.com/KDTechHub"
+        ]
+    }
+    </script>
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- Updated Header Section -->
+<header class="header">
+    <div class="logo">
+        <img src="assets/img/KDBoostHub.png" alt="KDBoostHub Logo">
+    </div>
+    <div class="menu-toggle" id="menuToggle">
+        <span>&#9776;</span>
+    </div>
+    <nav class="dropdown" id="dropdownMenu">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="#category-container">Our Services</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>KD Boost Hub</h1>
+        <p>We provide the best <strong>Social Media & SEO Services</strong> to grow your business.</p>
+        <a href="#category" class="btn">Discover More</a>
+    </div>
+</section>
+
+<!-- Main Content -->
+<div class="container">
+    <input type="text" class="search-bar" placeholder="Search Services...">
+
+    <!-- Category Dropdown -->
+    <label for="category">Select Category:</label>
+    <select id="category">
+        <option value="">Choose a Category</option>
+    </select>
+
+    <!-- Services Dropdown -->
+    <label for="services">Select Service:</label>
+    <select id="services">
+        <option value="">Choose a Service</option>
+    </select>
+
+    <!-- Description Container -->
+    <div id="description-container"></div>
+
+    <!-- Details Container (Holds link, quantity, time, and charge) -->
+    <div id="details-container">
+        <label for="link">Link/Phone Number</label>
+        <input type="text" id="link" placeholder="Enter link or phone number">
+
+        <label for="quantity">Quantity</label>
+        <input type="number" id="quantity" placeholder="Enter quantity">
+
+        <label for="averageTime">Average Time</label>
+        <input type="text" id="averageTime" disabled>
+
+        <label for="charge">Charge</label>
+        <input type="text" id="charge" disabled>
+    </div>
+
+    <!-- Place Order Button -->
+    <button id="placeOrder">Place Order</button>
+</div>
+
+<!-- Order Confirmation Pop-up -->
+<div id="emailPopup" class="popup-container">
+    <div class="popup-content">
+        <h2>Confirm Your Order</h2>
+        
+        <!-- Pop-up Fields -->
+         <label for="popupCategory">Selected Category</label>
+        <input type="text" id="popupCategory" readonly>
+        
+        <label for="popupService">Selected Service</label>
+        <input type="text" id="popupService" readonly>
+       
+       <label for="popupLink">Delivery Address</label>
+        <input type="text" id="popupLink" readonly>
+       
+        <label for="popupQuantity">Quantity Needed</label>
+        <input type="text" id="popupQuantity" readonly>
+        
+        <label for="popupCharge">Total Charge</label>
+        <input type="text" id="popupCharge" readonly>
+
+        <!-- User Details -->
+        <label for="fullName && userEmail">Additional Details Needed</label>
+        <input type="text" id="fullName" placeholder="Your Name" required>
+        <input type="email" id="userEmail" placeholder="Your Email" required>
+
+        <!-- Payment Details -->
+        <label for="paymentMethod">Payment Method</label>
+        <select id="paymentMethod">
+            <option value="">Select Payment</option>
+            <option value="momo">Mobile Money</option>
+            <option value="bank">Bank Transfer</option>
+            <option value="crypto">Cryptocurrency</option>
+        </select>
+
+        <input type="text" id="paymentDetails" placeholder="Payment Info" readonly>
+
+        <!-- Proof of Payment -->
+        <label for="proofOfPayment">Upload Payment Proof:</label>
+<input type="file" id="proofOfPayment" accept="image/*,application/pdf">
+
+        <!-- Action Buttons -->
+        <button id="proceedButton">Submit</button>
+        <a href="#" id="cancelLink">Cancel</a>
+    </div>
+</div>
+
+    <!-- Pop-up Notification -->
+    <div id="notificationPopup" class="popup">
+        <div class="popup-contentt">
+            <!-- Close Button with Icon -->
+            <span class="close-btnn" title="Close">
+                <i class="fas fa-times"></i>
+            </span>
+
+            <!-- Success Icon -->
+            <div class="icon-container">
+                <i class="fas fa-check-circle"></i>
+            </div>
+
+            <!-- Pop-up Message -->
+            <h2>Order Submitted Successfully!</h2>
+            <p>Thank you for placing your order. We will process it shortly.</p>
+
+            <!-- Close Pop-up Button -->
+            <button id="closePopupp">Thank You
+            </button>
+        </div>
+    </div>
+
+    <!-- WhatsApp Floating Button -->
+    <div class="whatsapp-float">
+        <a href="https://wa.me/233594516288" target="_blank" class="whatsapp-button">
+            <span>Chat with us</span>
+        </a>
+        <div class="whatsapp-icon">
+            <a href="https://wa.me/233594516288" target="_blank">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
+    </div>
+    
+    <section class="why-choose-us-section">
+    <div class="how-it-works-section-container">
+        <h1 class="section-title">Why Choose Us?</h1>
+        <p class="section-subtitle">Learn what makes our panel stand out on the market.</p>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h2 class="feature-title">Superb Quality</h2>
+                <p class="feature-description">The best SMM services you can find on the market.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-credit-card"></i>
+                </div>
+                <h2 class="feature-title">Payment Options</h2>
+                <p class="feature-description">You can different payment options you prefer.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+                <h2 class="feature-title">Extra Affordable</h2>
+                <p class="feature-description">All SMM services on our panel are extra cheap.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h2 class="feature-title">Delivered Quickly</h2>
+                <p class="feature-description">You will be amazed at how speedy our order delivery is.</p>
+            </div>
+        </div>
+    </div>
+</section>
+    
+    <section class="how-it-works-section">
+    <div class="how-it-works-section-container">
+        <h1 class="section-title">How It Works</h1>
+        <p class="section-subtitle">4 easy steps to give your business new heights.</p>
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-icon">
+                    <i class="fas fa-user-plus"></i>
+                </div>
+                <h2 class="step-title">No Sign Up</h2>
+                <p class="step-description">Start with selecting your desired services.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-icon">
+                    <i class="fas fa-tasks"></i>
+                </div>
+                <h2 class="step-title">Select A Service</h2>
+                <p class="step-description">Place orders and get ready to see your business gain more popularity.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-icon">
+                    <i class="fas fa-wallet"></i>
+                </div>
+                <h2 class="step-title">Make Payment</h2>
+                <p class="step-description">Choose a suitable payment method to add funds to your account.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h2 class="step-title">Enjoy Results</h2>
+                <p class="step-description">Once your order is complete, enjoy the growth of your social media.</p>
+            </div>
+        </div>
+    </div>
+</section>
+    
+    <section class="success-stories">
+    <h2>Success Stories</h2>
+    <p>Check out some of our customers' success stories below.</p>
+
+    <div class="carousel">
+        <div class="testimonials-container">
+            <div class="testimonial active">
+                <p>“I couldn't figure out the best way to promote my business online. This panel has been the best solution so far! Just check their prices.”</p>
+                <span class="author">Jane Kim</span>
+            </div>
+            <div class="testimonial">
+                <p>“If you’re wondering how to get your social media noticed fast, this is it! Services are super quick and cheap.”</p>
+                <span class="author">Olivia Jenkins</span>
+            </div>
+            <div class="testimonial">
+                <p>“I didn’t have a big budget for SMM, but this panel solved that problem. Now I can order any service at an affordable price!”</p>
+                <span class="author">Roy Jefferson</span>
+            </div>
+            <div class="testimonial">
+                <p>“I highly recommend this panel for businesses and individuals. It made my job easier and helped me earn more.”</p>
+                <span class="author">Deepak Puri</span>
+            </div>
+        </div>
+
+        <div class="carousel-controls">
+            <button class="prev">❮</button>
+            <button class="next">❯</button>
+        </div>
+    </div>
+
+</section>
+    
+    <section class="faq-section">
+        <h2>Top 5 Most Asked Questions</h2>
+        <p>We gathered 5 of the most asked questions from our panel visitors and replied to them.</p>
+
+        <div class="faq-container">
+            <div class="faq">
+                <div class="faq-question">
+                    <span>What makes people look for SMM panels?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>SMM panels help people grow their social media presence...</p>
+                </div>
+            </div>
+
+            <div class="faq">
+                <div class="faq-question">
+                    <span>What SMM services does your panel provide?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Our panel provides followers, likes, comments, and more.</p>
+                </div>
+            </div>
+
+            <div class="faq">
+                <div class="faq-question">
+                    <span>Are SMM services on this panel safe to order?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, our services are tested and safe to use.</p>
+                </div>
+            </div>
+
+            <div class="faq">
+                <div class="faq-question">
+                    <span>Mass orders — how do they work?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Mass orders let you order multiple services at once.</p>
+                </div>
+            </div>
+
+            <div class="faq">
+                <div class="faq-question">
+                    <span>How does the Drip-feed feature work?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Drip-feed allows gradual engagement delivery over time.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Footer Section -->
+<footer class="footer">
+    <div class="stats-container">
+        <div class="stat">
+            <h2 id="accountsBoosted">25,986</h2>
+            <p>Accounts Boosted</p>
+        </div>
+        <div class="stat">
+            <h2 id="happyClients">24,564</h2>
+            <p>Happy Clients</p>
+        </div>
+        <div class="stat">
+            <h2 id="reviews">20,758</h2>
+            <p>Reviews</p>
+        </div>
+        <div class="stat">
+            <h2 id="countriesServed">195</h2>
+            <p>Countries Served</p>
+        </div>
+    <div class="footer-content">
+        <div class="footer-logo">
+            <img src="favicon/favicon.png" alt="KD Boost Hub Logo">
+            <h2>KD Boost Hub</h2>
+        </div>
+        
+        <div class="footer-info">
+            <p id="open-close-status">Checking status...</p>
+            <p>&copy; 2024 KD Boost Hub. All rights reserved.</p>
+        </div>
+
+        <div class="footer-socials">
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </div>
+</footer>
+
+    <!-- Other scripts -->
+<script src="assets/js/dashboard.js"></script>
+</body>
+</html>

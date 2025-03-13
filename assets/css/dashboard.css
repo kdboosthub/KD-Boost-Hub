@@ -1,0 +1,1081 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #fff; /* White background for better contrast */
+    color: #333; /* Darker text for better readability on light background */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%; /* Ensure body takes full width */
+    max-width: 1400px;
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    padding-top: 70px;
+    font-size: 16px; /* Base font size for better readability */
+    line-height: 1.6; /* Improved line height for readability */
+    overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+/* Media Queries for Responsive Adjustments */
+
+/* For tablets and smaller devices */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px; /* Slightly smaller font size for smaller screens */
+    }
+}
+
+/* For mobile devices */
+@media (max-width: 480px) {
+    body {
+        font-size: 12px; /* Smaller font size for mobile devices */
+    }
+}
+
+/* Header Styling */
+.header {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1100px;
+    background: white;
+    padding: 12px 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 30000;
+}
+
+.logo img {
+    width: 150px;
+    height: auto;
+    object-fit: contain;
+}
+
+.menu-toggle {
+    font-size: 28px;
+    cursor: pointer;
+    background: #eee;
+    padding: 12px;
+    border-radius: 5px;
+    display: none;
+}
+
+.dropdown {
+    display: flex;
+    gap: 20px;
+}
+
+.dropdown ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.dropdown ul li {
+    padding: 10px 20px;
+}
+
+.dropdown ul li a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    display: block;
+}
+
+.dropdown ul li:hover {
+    background: #f0f0f0;
+}
+
+/* Hero Section */
+.hero {
+    background: url('../img/hero-bg.jpg') center/cover no-repeat;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    position: flex;
+    padding: 20px;
+    margin-top: -20px; /* FIX: Pulls hero section up */
+}
+
+@media (max-width: 900px) {
+    .hero {
+        margin-top: -10px; /* Adjust for smaller screens */
+    }
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6); /* Dark overlay for readability */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 1.2rem;
+    color: white;
+    background: #ff4081;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #e6006f;
+}
+
+/* Responsive Menu */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .dropdown {
+        display: none;
+        position: absolute;
+        top: 70px;
+        right: 10px;
+        background: white;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 10px;
+        z-index: 2000;
+    }
+
+    .dropdown.active {
+        display: block;
+    }
+
+    .dropdown ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .dropdown ul li {
+        text-align: center;
+    }
+
+    .dropdown ul li a {
+        width: 100%;
+        display: block;
+    }
+}
+
+/* Main Container */
+.container {
+    width: 90%;
+    max-width: 1400px;
+    background: #1F144D;
+    padding: 20px; /* Increased padding for better spacing */
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+    margin: 20px 0;
+}
+
+/* Search Bar */
+.search-bar {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+    outline: none;
+    background: #EFEFEF;
+    color: #333333; /* Darker text for better contrast */
+    margin-bottom: 20px; /* Increased margin for better spacing */
+}
+
+/* Labels */
+label {
+    display: block;
+    margin: 15px 0 8px; /* Adjusted margin for better spacing */
+    font-weight: 600; /* Bolder labels for better hierarchy */
+    font-size: 14px;
+    color: #E0E0E0; /* Soft white for labels */
+}
+
+/* Dropdown and Input Fields */
+select, input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+    background: #EFEFEF;
+    color: #333333; /* Darker text for better contrast */
+    outline: none;
+    margin-bottom: 15px; /* Added margin for better spacing */
+}
+
+/* Description Box */
+#description-container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px; /* Increased padding for better spacing */
+    border-radius: 10px;
+    margin-top: 15px; /* Adjusted margin for better spacing */
+    font-size: 14px;
+    line-height: 1.6;
+    color: #E0E0E0; /* Soft white for text */
+}
+
+#description-container p {
+    margin-bottom: 12px; /* Adjusted margin for better spacing */
+}
+
+#description-container ol {
+    padding-left: 25px; /* Increased padding for better spacing */
+}
+
+#description-container li {
+    margin-bottom: 8px; /* Adjusted margin for better spacing */
+}
+
+/* Buttons */
+button {
+    width: 100%;
+    padding: 14px; /* Slightly increased padding for better touch targets */
+    background: #7C4DFF; /* Brighter purple for buttons */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    margin-top: 20px; /* Increased margin for better spacing */
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600; /* Bolder text for buttons */
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #6A40E0; /* Slightly darker purple for hover effect */
+}
+
+/* WhatsApp Floating Button */
+.whatsapp-float {
+    position: fixed;
+    bottom: 25px; /* Adjusted position for better spacing */
+    right: 25px; /* Adjusted position for better spacing */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 1005;
+}
+
+.whatsapp-button {
+    background: white;
+    color: black;
+    padding: 12px 20px; /* Increased padding for better touch targets */
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    border: 2px solid #25D366;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.whatsapp-button:hover {
+    transform: scale(1.05);
+}
+
+.whatsapp-icon {
+    background: #25D366;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.whatsapp-icon img {
+    width: 30px;
+    height: 30px;
+}
+
+.close-btn {
+    background: black;
+    color: white;
+    border: none;
+    font-size: 18px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.why-choose-us-section {
+    padding: 80px 20px;
+    background: #f9f9f9;
+    text-align: center;
+}
+
+/* Directly target the <h1> inside .why-choose-us-section */
+.why-choose-us-section h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #000; /* Black color for the title */
+}
+
+/* Directly target the <p> inside .why-choose-us-section */
+.why-choose-us-section p {
+    font-size: 1.2rem;
+    color: #000; /* Black color for the subtitle */
+    margin-bottom: 50px;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.feature-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    color: #7C4DFF;
+    margin-bottom: 20px;
+}
+
+.feature-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.feature-description {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+.how-it-works-section {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #1a0033, #12002b);
+    color: #fff;
+    text-align: center;
+}
+
+.how-it-works-section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    color: #e0e0e0;
+    margin-bottom: 50px;
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.step-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.step-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.step-icon {
+    font-size: 2.5rem;
+    color: #7C4DFF;
+    margin-bottom: 20px;
+}
+
+.step-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.step-description {
+    font-size: 1rem;
+    color: #e0e0e0;
+    line-height: 1.6;
+}
+
+.success-stories {
+    padding: 40px 20px;
+    background: #f9f9f9;
+    text-align: center;
+}
+
+.success-stories h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+.carousel {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.testimonial {
+    display: none;
+    padding: 20px;
+    background: #1A0F44;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial.active {
+    display: block;
+}
+
+.testimonial p {
+    font-size: 16px;
+    color: #fff;
+    line-height: 1.6;
+}
+
+.testimonial .author {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #fff;
+}
+
+/* Success Stories Carousel */
+.carousel-controls {
+    display: flex;
+    justify-content: center; /* Align buttons in the center */
+    align-items: center;
+    gap: 15px; /* Add space between the buttons */
+    margin-top: 20px;
+}
+
+.carousel-controls button {
+    background: #7C4DFF;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.carousel-controls button:hover {
+    background: #6A40E0;
+    transform: scale(1.1);
+}
+
+/* FAQ Section */
+.faq-section {
+    padding: 40px 20px;
+    background: linear-gradient(to bottom, #12002b, #1a0033);
+    color: white;
+    text-align: center;
+}
+
+.faq-section h2 {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.faq-section p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+/* FAQ Container */
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Individual FAQ */
+.faq {
+    background: #f8f9fa;  /* Soft white background */
+    color: black;  /* Black text */
+    border-radius: 8px;
+    margin: 10px 0;
+    padding: 15px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.faq:hover {
+    background: #e9ecef; /* Slightly darker white on hover */
+}
+
+/* FAQ Question */
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Chevron Icon */
+.faq-question i {
+    transition: transform 0.3s ease;
+}
+
+/* FAQ Answer */
+.faq-answer {
+  display: block !important;
+  opacity: 1;
+    max-height: none;
+    overflow: hidden;
+    transition: none;
+    font-size: 16px;
+    padding-top: 10px;
+    text-align: left;
+}
+
+/* Active Class */
+.faq.active .faq-answer {
+    max-height: 150px;
+    padding: 10px;
+}
+
+.faq.active .faq-question i {
+    transform: rotate(180deg);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .faq-question {
+        font-size: 16px;
+    }
+}
+
+/* Pop-up Container */
+.popup-container {
+    display: none;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 40000;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    overflow-y: auto; /* Enable vertical scrolling for the container */
+}
+
+/* Pop-up Content */
+.popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    max-width: 300px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-sizing: border-box;
+    margin: 20px;
+}
+
+@media (max-width: 500px) {
+    .container {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .popup-content {
+        width: 90%;
+        padding: 15px;
+        max-height: 90vh; /* Adjust max-height for smaller screens */
+    }
+}
+
+.popup-content h2 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.popup-content p {
+    margin-bottom: 20px;
+    color: #666;
+}
+
+.popup-content input[type="text"], 
+.popup-content input[type="email"], 
+.popup-content select, 
+.popup-content input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.popup-content button {
+    width: 100%;
+    padding: 10px;
+    background-color: #7C4DFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.popup-content button:hover {
+    background-color: #6A40E0;
+}
+
+.popup-content a {
+    display: block;
+    margin-top: 10px;
+    color: #7C4DFF;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.popup-content a:hover {
+    text-decoration: underline;
+}
+
+/* Target labels inside the pop-up container */
+#emailPopup label {
+    color: #333; /* Blue color for all labels in the pop-up */
+    font-weight: bold; /* Optional: Make the text bold */
+}
+
+/* Footer Styling */
+.footer {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    font-family: Arial, sans-serif;
+    position: relative;
+    width: 100%;
+    bottom: 0;
+}
+
+.stats-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 900px;
+    margin: auto;
+}
+
+.stat {
+    flex: 1;
+    min-width: 150px;
+    margin: 20px;
+}
+
+.stat h2 {
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+}
+
+.stat p {
+    font-size: 18px;
+    color: white;
+} {
+    background: rgba(128, 0, 128, 0.8); /* Purple background with transparency */
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.stats-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 900px;
+    margin: auto;
+}
+
+.stat {
+    flex: 1;
+    min-width: 150px;
+    margin: 20px;
+}
+
+.stat h2 {
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+}
+
+.stat p {
+    font-size: 18px;
+    color: white;
+} {
+    background: rgba(128, 0, 128, 0.8); /* Purple background with transparency */
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.stats-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 900px;
+    margin: auto;
+}
+
+.stat {
+    flex: 1;
+    min-width: 150px;
+    margin: 20px;
+}
+
+.stat h2 {
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+}
+
+.stat p {
+    font-size: 18px;
+    color: white;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-logo img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.footer-logo h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.footer-info p {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+/* Real-time open/close status styling */
+#open-close-status {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+#open-close-status.open {
+    color: #28a745;
+    animation: glow-green 1s infinite alternate;
+}
+
+#open-close-status.closed {
+    color: #dc3545;
+    animation: glow-red 1s infinite alternate;
+}
+
+/* Glowing Effect for Open & Closed Status */
+@keyframes glow-green {
+    0% { text-shadow: 0 0 5px #28a745; }
+    100% { text-shadow: 0 0 15px #28a745; }
+}
+
+@keyframes glow-red {
+    0% { text-shadow: 0 0 5px #dc3545; }
+    100% { text-shadow: 0 0 15px #dc3545; }
+}
+
+/* Social Icons */
+.footer-socials {
+    display: flex;
+    gap: 10px;
+}
+
+.social-icon {
+    color: #fff;
+    font-size: 18px;
+    padding: 10px;
+    transition: 0.3s;
+}
+
+.social-icon:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+    .footer-content {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0 20px;
+    }
+}
+
+/* Pop-up Styles */
+.popup {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    justify-content: center;
+    align-items: center;
+    z-index: 100000;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.popup-contentt {
+    background-color: white;
+    padding: 30px; /* Consistent padding */
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 100%; /* Responsive max-width */
+    width: 80%; /* Responsive width */
+    position: relative;
+    animation: slideIn 0.3s ease-in-out;
+}
+
+/* Responsive Width Adjustments */
+@media (min-width: 480px) {
+    .popup-content {
+        max-width: 400px; /* Slightly wider for small devices */
+    }
+}
+
+@media (min-width: 768px) {
+    .popup-content {
+        max-width: 500px; /* Wider for tablets */
+    }
+}
+
+@media (min-width: 1024px) {
+    .popup-content {
+        max-width: 600px; /* Wider for desktops */
+    }
+}
+
+@media (min-width: 1200px) {
+    .popup-content {
+        max-width: 700px; /* Even wider for large desktops */
+    }
+}
+
+/* Success Icon */
+.icon-container {
+    margin-bottom: 30px; /* Increased margin for more space */
+}
+
+.icon-container i {
+    font-size: 60px; /* Larger icon */
+    color: #28a745; /* Green color for success */
+}
+
+/* Pop-up Message */
+.popup-contentt h2 {
+    margin-top: 0;
+    color: #28a745; /* Green color for success */
+    font-size: 28px; /* Larger heading */
+    margin-bottom: 20px; /* Added margin for spacing */
+}
+
+.popup-contentt p {
+    font-size: 18px; /* Larger text */
+    color: #555;
+    margin-bottom: 30px; /* Increased margin for more space */
+}
+
+/* Close Button */
+#closePopupp {
+    padding: 12px 24px; /* Larger button */
+    font-size: 18px; /* Larger text */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#closePopupp:hover {
+    background-color: #0056b3;
+}
+
+/* Close (X) Button */
+.close-btnn {
+    position: absolute;
+    top: 20px; /* Adjusted position */
+    right: 20px; /* Adjusted position */
+    font-size: 24px; /* Larger close icon */
+    cursor: pointer;
+    color: #888;
+    transition: color 0.3s ease;
+}
+
+.close-btnn:hover {
+    color: #000;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+    .popup-content {
+        padding: 25px; /* Slightly reduced padding for smaller screens */
+        max-width: 90%; /* Adjusted max-width for better fit */
+    }
+
+    .icon-container i {
+        font-size: 50px; /* Slightly smaller icon for mobile */
+    }
+
+    .popup-contentt h2 {
+        font-size: 24px; /* Slightly smaller heading for mobile */
+    }
+
+    .popup-contentt p {
+        font-size: 16px; /* Slightly smaller text for mobile */
+    }
+
+    #closePopupp {
+        padding: 10px 20px; /* Slightly smaller button for mobile */
+        font-size: 16px;
+    }
+
+    .close-btnn {
+        font-size: 22px; /* Slightly smaller close icon for mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .popup-content {
+        padding: 20px; /* Further reduced padding for very small screens */
+        max-width: 95%; /* Adjusted max-width for very small screens */
+    }
+
+    .icon-container i {
+        font-size: 40px; /* Even smaller icon for very small screens */
+    }
+
+    .popup-contentt h2 {
+        font-size: 20px; /* Smaller heading for very small screens */
+    }
+
+    .popup-contentt p {
+        font-size: 14px; /* Smaller text for very small screens */
+    }
+
+    #closePopupp {
+        padding: 8px 16px; /* Smaller button for very small screens */
+        font-size: 14px;
+    }
+
+    .close-btnn {
+        font-size: 20px; /* Smaller close icon for very small screens */
+    }
+}
